@@ -1,56 +1,33 @@
-import { useState } from "react";
-import "./App.css";
+import React from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+import Sidebar from "./components/Sidebar";
+import Topbar from "./components/Topbar";
 
-function App() {
-  const [activePage, setActivePage] = useState("dashboard");
+import Dashboard from "./pages/Dashboard";
+import Properties from "./pages/Properties";
+import Tenants from "./pages/Tenants";
+import Leases from "./pages/Leases";
+import Payments from "./pages/Payments";
+import Reports from "./pages/Reports";
 
-  const renderContent = () => {
-    switch (activePage) {
-      case "properties":
-        return <h2>🏠 Properties Management</h2>;
-      case "tenants":
-        return <h2>👨‍👩‍👧 Tenants Management</h2>;
-      case "agents":
-        return <h2>🧑‍💼 Agents Management</h2>;
-      case "leases":
-        return <h2>📑 Lease Management</h2>;
-      case "payments":
-        return <h2>💵 Payments (Ksh)</h2>;
-      case "reports":
-        return <h2>📊 Income Reports</h2>;
-      default:
-        return <h2>📌 Welcome to Rental & Income Management System</h2>;
-    }
-  };
-
+export default function App() {
   return (
-    <div className="app-container">
-      {/* Navbar */}
-      <nav className="navbar">
-        <h1>🏡 Rentals & Income Management</h1>
-      </nav>
-
-      <div className="main-layout">
-        {/* Sidebar */}
-        <aside className="sidebar">
-          <ul>
-            <li onClick={() => setActivePage("dashboard")}>Dashboard</li>
-            <li onClick={() => setActivePage("properties")}>Properties</li>
-            <li onClick={() => setActivePage("tenants")}>Tenants</li>
-            <li onClick={() => setActivePage("agents")}>Agents</li>
-            <li onClick={() => setActivePage("leases")}>Leases</li>
-            <li onClick={() => setActivePage("payments")}>Payments</li>
-            <li onClick={() => setActivePage("reports")}>Reports</li>
-          </ul>
-        </aside>
-
-        {/* Main Content */}
-        <main className="content">
-          {renderContent()}
-        </main>
+    <div className="app-shell">
+      <Sidebar />
+      <div className="main">
+        <Topbar />
+        <div className="page">
+          <Routes>
+            <Route path="/" element={<Navigate to="/dashboard" />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/properties" element={<Properties />} />
+            <Route path="/tenants" element={<Tenants />} />
+            <Route path="/leases" element={<Leases />} />
+            <Route path="/payments" element={<Payments />} />
+            <Route path="/reports" element={<Reports />} />
+          </Routes>
+        </div>
       </div>
     </div>
   );
 }
-
-export default App;
