@@ -1,14 +1,14 @@
+// client/src/App.jsx
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import Sidebar from "./components/Sidebar";
-import Topbar from "./components/Topbar";
-
-import Dashboard from "./pages/Dashboard";
-import Properties from "./pages/Properties";
-import Tenants from "./pages/Tenants";
-import Leases from "./pages/Leases";
-import Payments from "./pages/Payments";
-import Reports from "./pages/Reports";
+import Sidebar from "./components/Sidebar.jsx";
+import Topbar from "./components/Topbar.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
+import Properties from "./pages/Properties.jsx";
+import Tenants from "./pages/Tenants.jsx";
+import Leases from "./pages/Leases.jsx";
+import Payments from "./pages/Payments.jsx";
+import Reports from "./pages/Reports.jsx";
 
 export default function App() {
   return (
